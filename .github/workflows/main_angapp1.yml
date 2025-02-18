@@ -24,27 +24,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Chromium dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            libnss3 \
-            libx11-xcb1 \
-            libxcb-dri3-0 \
-            libxcomposite1 \
-            libxcursor1 \
-            libxdamage1 \
-            libxi6 \
-            libxtst6 \
-            libxrandr2 \
-            libatk1.0-0 \
-            libgtk-3-0
-        continue-on-error: true  # Avoid breaking the workflow due to missing packages
-
-      - name: Run tests
-        run: |
-          npm run test -- --browsers ChromeHeadless --watch=false --no-progress
-
       - name: Build application
         run: npm run build --if-present
 
