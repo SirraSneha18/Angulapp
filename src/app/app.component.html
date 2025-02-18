@@ -1,0 +1,3 @@
+<div *ngIf="configuration$ | async as config">
+  <p>Feature Flag: {{ config.featureFlag }}</p>
+</div>
