@@ -5,13 +5,12 @@
   "projects": {
     "config-loader-app": {
       "projectType": "application",
-      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",  
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/config-loader-app",
             "index": "src/index.html",
@@ -25,10 +24,6 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "/assets"
-              },
-              {
-                "glob": "**/*",
-                "input": "public"
               }
             ],
             "styles": [
@@ -54,8 +49,8 @@
             },
             "development": {
               "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "extractLicenses": false
             }
           },
           "defaultConfiguration": "production"
@@ -72,33 +67,19 @@
           },
           "defaultConfiguration": "development"
         },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "main": "src/test.ts",
             "polyfills": [
-              "zone.js",
-              "zone.js/testing"
+              "zone.js"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+            "karmaConfig": "karma.conf.js",
+            "browsers": ["ChromeHeadless"]
           }
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "7742952e-02de-4afc-b376-2fbd161c9938"
   }
 }
